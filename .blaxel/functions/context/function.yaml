@@ -1,0 +1,25 @@
+apiVersion: blaxel.ai/v1alpha1
+kind: Function
+metadata:
+  name: context
+  displayName: context
+  labels:
+    x-blaxel-auto-generated: "true"
+spec:
+  description: Get the context from the knowledgebase.
+  parameters:
+    - name: query
+      type: string
+      description: The query to get the context from.
+  runtime:
+    envs:
+      - name: QDRANT_URL
+        value: $secrets.QDRANT_URL
+      - name: QDRANT_API_KEY
+        value: $secrets.QDRANT_API_KEY
+      - name: QDRANT_COLLECTION_NAME
+        value: corporate-cortex-kb
+      - name: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - name: EMBEDDING_MODEL_TYPE
+        value: openai
