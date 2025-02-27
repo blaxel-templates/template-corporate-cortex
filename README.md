@@ -11,7 +11,7 @@ This repository is a template implementation of a Corporate Knowledge Agent buil
 - **Node.js:** v20 or later
 - **Blaxel CLI:** Install globally:
   ```bash
-  curl -fsSL https://raw.githubusercontent.com/blaxel/toolkit/main/install.sh | BINDIR=$HOME/.local/bin sh
+  curl -fsSL https://raw.githubusercontent.com/beamlit/toolkit/main/install.sh | BINDIR=$HOME/.local/bin sh
   ```
 - **Blaxel login:** Login to your workspace:
   ```bash
@@ -22,7 +22,7 @@ This repository is a template implementation of a Corporate Knowledge Agent buil
 
 1. Clone and install dependencies:
    ```bash
-   git clone https://github.com/your-repo/template-corporate-cortex.git
+   git clone https://github.com/beamlit/template-corporate-cortex.git
    cd template-corporate-cortex
    npm install
    ```
@@ -41,6 +41,10 @@ This repository is a template implementation of a Corporate Knowledge Agent buil
      - Sign up at [OpenAI Platform](https://platform.openai.com/)
      - Navigate to API keys section
      - Create a new API key for `OPENAI_API_KEY`
+   - Exa API key:
+     - Visit Exa.ai
+     - Create an account and subscribe to a plan
+     - Generate an API key from your dashboard for EXA_API_KEY
    - Embedding model configuration:
      - Set `EMBEDDING_MODEL` to your preferred embedding model (e.g., "text-embedding-3-small")
      - Set `EMBEDDING_MODEL_TYPE` to the appropriate type (e.g., "openai")
@@ -93,16 +97,6 @@ Start the development server with hot reloading:
 
 ```bash
 bl serve --hotreload
-```
-
-Alternatively, you can use the npm scripts defined in package.json:
-
-```bash
-# Start the application
-npm start
-
-# Start with hot reloading
-npm run dev
 ```
 
 To test the agent, open a new terminal and run:

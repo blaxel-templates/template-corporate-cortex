@@ -2,7 +2,11 @@ import { logger, wrapFunction } from "@blaxel/sdk";
 import { getKnowledgebase } from "../knowledgebase";
 import dotenv from "dotenv";
 
-dotenv.config();
+try {
+    dotenv.config();
+} catch (error) {
+    logger.error(`Error loading environment variables: ${error}`);
+}
 /**
  * Get the context from the knowledgebase.
  * @param query - The query to get the context from.
@@ -128,7 +132,7 @@ export async function getContext({query}: {query: string}): Promise<string> {
     }
 }
 
-export const context = wrapFunction(getContext, {
+export default wrapFunction(getContext, {
     function: {
         metadata: {
             name: "context",
