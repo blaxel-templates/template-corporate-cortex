@@ -29,7 +29,7 @@ This repository is a template implementation of a Corporate Knowledge Agent buil
 
 2. Configure environment variables:
    ```bash
-   cp .sample-env .env
+   cp .env-sample env
    ```
    Update the following in your `.env`:
    - Qdrant configuration:

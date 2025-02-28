@@ -74,9 +74,8 @@ For a question like "Can we buy tool XY?":
 
 3. **Response:**
     * "Based on what I know, yes, we can purchase Tool XY, but there are a few things to consider first. 
-    * I was in a meeting with Sarah Johnson (Procurement Manager) - s.johnson@company.com - x2345 last week, and she mentioned we already have Tool AB that does 80% of what XY does. 
     * That said, if you need those specific features, you'll need to submit a request through our procurement portal. I helped another team with this process last month.
-    * The approval will need to go through both Mike Chen (IT Director) - m.chen@company.com - x3456 and your department head. 
+    * The approval will need to go through both XXXXXXX XXXXXX (IT Director) - X.XXXXXX@company.com - XXXXXX and your department head. 
     * Let me know if you need help with the request form - I've filled out dozens of these and can save you some time."
 `;
 

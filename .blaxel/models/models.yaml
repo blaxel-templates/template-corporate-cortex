@@ -1,7 +1,7 @@
 apiVersion: blaxel.ai/v1alpha1
 kind: IntegrationConnection
 metadata:
-  name: openai-integration
+  name: my-openai-integration
 spec:
   integration: openai
   secret:
@@ -10,23 +10,25 @@ spec:
 apiVersion: blaxel.ai/v1alpha1
 kind: Model
 metadata:
-  name: text-embedding-3-small
-  displayName: Text Embedding 3 Small
+  displayName: gpt-4o
+  name: gpt-4o
 spec:
+  enabled: true
   integrationConnections:
-    - openai-integration
+    - my-openai-integration
   runtime:
-    model: text-embedding-3-small
+    model: gpt-4o
     type: openai
 ---
 apiVersion: blaxel.ai/v1alpha1
 kind: Model
 metadata:
-  name: gpt-4o
-  displayName: GPT-4o
+  displayName: text-embedding-3-small
+  name: text-embedding-3-small
 spec:
+  enabled: true
   integrationConnections:
-    - openai-integration
+    - my-openai-integration
   runtime:
-    model: gpt-4o
+    model: text-embedding-3-small
     type: openai
