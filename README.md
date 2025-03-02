@@ -2,7 +2,9 @@
 
 This repository is a template implementation of a Corporate Knowledge Agent built using the [Blaxel SDK](https://blaxel.ai) and [LangChain](https://langchain.com). The agent serves as an expert AI assistant deeply embedded within your organization, providing accurate, contextually relevant, and actionable responses to internal inquiries regarding IT services, resources, and processes by leveraging a comprehensive knowledge base.
 
-https://raw.githubusercontent.com/beamlit/template-corporate-cortex/main/assets/demo.mp4
+<div align="center">
+  <video src="assets/demo.mp4" width="400" />
+</div>
 
 
 ## 🚀 Prerequisites
