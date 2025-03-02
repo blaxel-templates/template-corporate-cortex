@@ -9,7 +9,7 @@ This repository is a template implementation of a Corporate Knowledge Agent buil
 ## 🎬 See It In Action
 
 <p align="center">
-  <a href="https://www.tella.tv/video/setting-up-your-first-knowledge-base-template-hu22">
+  <a href="https://www.tella.tv/video/setting-up-your-first-knowledge-base-template-hu22" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/▶️_Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch Demo" width="200"/>
   </a>
 </p>
