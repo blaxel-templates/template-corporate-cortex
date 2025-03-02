@@ -3,7 +3,10 @@
 This repository is a template implementation of a Corporate Knowledge Agent built using the [Blaxel SDK](https://blaxel.ai) and [LangChain](https://langchain.com). The agent serves as an expert AI assistant deeply embedded within your organization, providing accurate, contextually relevant, and actionable responses to internal inquiries regarding IT services, resources, and processes by leveraging a comprehensive knowledge base.
 
 <p align="center">
-  <img src="./assets/illustration.jpeg" width="600" alt="Corporate Cortex Agent">
+  <video width="600" controls>
+    <source src="./assets/demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </p>
 
 ## 🚀 Prerequisites
