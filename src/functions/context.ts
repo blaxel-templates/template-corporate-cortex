@@ -1,6 +1,6 @@
 import { logger, wrapFunction } from "@blaxel/sdk";
-import { getKnowledgebase } from "../knowledgebase";
 import dotenv from "dotenv";
+import { getKnowledgebase } from "../knowledgebase";
 
 try {
     dotenv.config();
@@ -40,7 +40,7 @@ export async function getContext({query}: {query: string}): Promise<string> {
             logger.info(`Retrieved ${documents.length} documents from knowledgebase`);
 
             // Sort documents by similarity score (highest first)
-            const sortedDocs = documents.sort((a, b) => b.similarity - a.similarity);
+            const sortedDocs = documents.sort((a: { similarity: number }, b: { similarity: number }) => b.similarity - a.similarity);
 
             // Group documents by type/category if metadata is available
             const groupedDocs: Record<string, Array<{ value: string; similarity: number; metadata?: any }>> = {};
@@ -167,12 +167,14 @@ export default wrapFunction(getContext, {
     },
     name: "context",
     description: "Get the context from the knowledgebase.",
-    parameters: [
-        {
-            name: "query",
-            type: "string",
-            description: "The query to get the context from.",
+    schema: {
+        type: "object",
+        properties: {
+            query: {
+                type: "string",
+                description: "The query to get the context from.",
+            },
         },
-    ],
+    },
 });
 
