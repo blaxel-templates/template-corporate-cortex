@@ -1,7 +1,7 @@
 import { env, logger } from "@blaxel/sdk";
 import Fastify from "fastify";
 import { v4 as uuidv4 } from "uuid";
-import { agent } from "./src/agent";
+import { agent } from "./agent";
 
 interface RequestBody {
   inputs: string;

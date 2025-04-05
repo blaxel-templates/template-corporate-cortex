@@ -1,5 +1,5 @@
-import { blTools, blModel } from "@blaxel/sdk";
-import { HumanMessage }  from "@langchain/core/messages";
+import { blTools, blModel, logger } from "@blaxel/sdk";
+import { AIMessageChunk, HumanMessage }  from "@langchain/core/messages";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { userPrompt, systemPrompt } from "./prompt";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
@@ -28,17 +28,28 @@ export async function agent(thread_id: string, input: string, stream: Stream): P
     ],
   }).stream({
     messages: [new HumanMessage(prompt)],
+    
   }, {
     configurable: {
       thread_id: thread_id
-    }
+    },
+    streamMode: "messages"
   });
 
   for await (const chunk of streamResponse) {
-    if(chunk.agent) for(const message of chunk.agent.messages) {
-      stream.write(message.content)
+    try {
+      // Parse chunk if it's a string       
+      if (chunk[0] instanceof AIMessageChunk) {
+        if (chunk[0].content && (!chunk[0].tool_calls || chunk[0].tool_calls?.length === 0)) {
+          stream.write(chunk[0].content.toString());
+        } 
+      }
+    } catch (error: any) {
+      logger.error(`Error processing chunk: ${error.message}`);
+      // Don't send raw chunks - just log the error
     }
   }
+  
   stream.end();
 }
 
