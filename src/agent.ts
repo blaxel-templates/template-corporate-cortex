@@ -1,81 +1,55 @@
-import { getDefaultThread, wrapAgent } from "@blaxel/sdk";
-import { HumanMessage } from "@langchain/core/messages";
+import { blTools, blModel, logger } from "@blaxel/sdk";
+import { AIMessageChunk, HumanMessage }  from "@langchain/core/messages";
 import { PromptTemplate } from "@langchain/core/prompts";
-import { CompiledGraph } from "@langchain/langgraph";
-import { FastifyRequest } from "fastify";
-import { v4 as uuidv4 } from "uuid";
 import { userPrompt, systemPrompt } from "./prompt";
+import { createReactAgent } from "@langchain/langgraph/prebuilt";
+import { getContextTool } from "./functions/context";
 
-type InputType = {
-  input?: string;
-  inputs?: string;
-};
-
-type AgentType = {
-  agent: CompiledGraph<any, any, any, any, any, any>;
-};
+interface Stream {
+  write: (data: string) => void;
+  end: () => void;
+}
 
 const promptTemplate = PromptTemplate.fromTemplate(userPrompt);
 
-export const req = async (request: FastifyRequest, args: AgentType) => {
-  const { agent } = args;
-  const body = (await request.body) as InputType;
-  const thread_id = getDefaultThread(request) || uuidv4();
-  const input = body.input || body.inputs || "";
-  
-  // Format the prompt with just the user's input
-  const formattedPrompt = await promptTemplate.format({ 
-    input: input,
+
+export async function agent(thread_id: string, input: string, stream: Stream): Promise<void> {
+  const prompt = await promptTemplate.format({
+    input: input
   });
-  
-  const responses: any[] = [];
+  const streamResponse = await createReactAgent({
+    // Load model API dynamically from Blaxel:
+    llm: await blModel("gpt-4o").ToLangChain(),
+    prompt: systemPrompt,
+    // Load tools dynamically from Blaxel:
+    tools: [
+      ...await blTools(['exa']).ToLangChain(),
+      getContextTool
+    ],
+  }).stream({
+    messages: [new HumanMessage(prompt)],
+    
+  }, {
+    configurable: {
+      thread_id: thread_id
+    },
+    streamMode: "messages"
+  });
 
-  const stream = await agent.stream(
-    { messages: [new HumanMessage(formattedPrompt)] },
-    { configurable: { thread_id } }
-  );
-
-  for await (const chunk of stream) {
-    responses.push(chunk);
+  for await (const chunk of streamResponse) {
+    try {
+      // Parse chunk if it's a string       
+      if (chunk[0] instanceof AIMessageChunk) {
+        if (chunk[0].content && (!chunk[0].tool_calls || chunk[0].tool_calls?.length === 0)) {
+          stream.write(chunk[0].content.toString());
+        } 
+      }
+    } catch (error: any) {
+      logger.error(`Error processing chunk: ${error.message}`);
+      // Don't send raw chunks - just log the error
+    }
   }
-  const content = responses[responses.length - 1];
-  return content.agent.messages[content.agent.messages.length - 1].content;
-};
+  
+  stream.end();
+}
 
-export const agent = wrapAgent(req, {
-  agent: {
-    metadata: {
-      name: "template-corporate-cortex",
-    },
-    spec: {
-      model: "gpt-4o",
-      description: "You are a helpful assistant that can answer questions and help with tasks.",
-      prompt: systemPrompt,
-      runtime: {
-        envs: [
-          {
-            name: "QDRANT_URL",
-            value: "$secrets.QDRANT_URL",
-          },
-          {
-            name: "QDRANT_API_KEY",
-            value: "$secrets.QDRANT_API_KEY",
-          },
-          {
-            name: "QDRANT_COLLECTION_NAME",
-            value: process.env.QDRANT_COLLECTION_NAME,
-          },
-          {
-            name: "EMBEDDING_MODEL",
-            value: process.env.EMBEDDING_MODEL,
-          },
-          {
-            name: "EMBEDDING_MODEL_TYPE",
-            value: process.env.EMBEDDING_MODEL_TYPE,
-          },
-        ],
-      },
-    },
-  },
-  remoteFunctions: ["exa"]
-});

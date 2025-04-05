@@ -1,18 +1,26 @@
-import { logger, wrapFunction } from "@blaxel/sdk";
-import dotenv from "dotenv";
+import { logger } from "@blaxel/sdk";
 import { getKnowledgebase } from "../knowledgebase";
+import { tool } from "@langchain/core/tools";
+import { z } from "zod";
 
-try {
-    dotenv.config();
-} catch (error) {
-    logger.error(`Error loading environment variables: ${error}`);
-}
+const getContextSchema = z.object({
+    query: z.string(),
+});
 /**
  * Get the context from the knowledgebase.
  * @param query - The query to get the context from.
  */
 
-export async function getContext({query}: {query: string}): Promise<string> {
+export const getContextTool = tool(
+  async (args: z.infer<typeof getContextSchema>) => getContext(args),
+  {
+    name: "getContext",
+    description: "Get the context from the knowledgebase.",
+    schema: getContextSchema,
+  }
+);
+
+async function getContext({query}: {query: string}): Promise<string> {
     // Add people-related search terms if the query doesn't already include them
     let enhancedQuery = query;
     if (!query.toLowerCase().includes("contact") && 
@@ -131,50 +139,3 @@ export async function getContext({query}: {query: string}): Promise<string> {
         return "Error retrieving information from knowledge base.";
     }
 }
-
-export default wrapFunction(getContext, {
-    function: {
-        metadata: {
-            name: "context",
-        },
-        spec: {
-            description: "Get the context from the knowledgebase.",
-            runtime: {
-                envs: [
-                    {
-                        name: "QDRANT_URL",
-                        value: "$secrets.QDRANT_URL",
-                    },
-                    {
-                        name: "QDRANT_API_KEY",
-                        value: "$secrets.QDRANT_API_KEY",
-                    },
-                    {
-                        name: "QDRANT_COLLECTION_NAME",
-                        value: process.env.QDRANT_COLLECTION_NAME,
-                    },
-                    {
-                        name: "EMBEDDING_MODEL",
-                        value: process.env.EMBEDDING_MODEL,
-                    },
-                    {
-                        name: "EMBEDDING_MODEL_TYPE",
-                        value: process.env.EMBEDDING_MODEL_TYPE,
-                    },
-                ],
-            },
-        },
-    },
-    name: "context",
-    description: "Get the context from the knowledgebase.",
-    schema: {
-        type: "object",
-        properties: {
-            query: {
-                type: "string",
-                description: "The query to get the context from.",
-            },
-        },
-    },
-});
-
