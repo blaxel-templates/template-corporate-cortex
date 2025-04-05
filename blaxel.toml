@@ -1,5 +1,11 @@
 type = "agent"
 
 [env]
-QDRANT_COLLECTION_NAME = "template-test"
 QDRANT_EMBEDDING_MODEL = "text-embedding-3-small"
+QDRANT_EMBEDDING_MODEL_TYPE = "openai"
+
+[secrets]
+QDRANT_URL = ${secrets.QDRANT_URL}
+QDRANT_COLLECTION_NAME = ${secrets.QDRANT_COLLECTION_NAME}
+QDRANT_API_KEY = ${secrets.QDRANT_API_KEY}
+
