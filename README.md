@@ -178,6 +178,8 @@ bl deploy
   - `agent.ts` - Main agent configuration and request handling
   - `prompt.ts` - System and user prompt templates
   - `knowledgebase.ts` - Knowledge base integration with Qdrant
+  - `embeddings.ts` - Embedding model configuration
+  - `error.ts` - Error handling
   - `functions/` - Custom functions for the agent
 - **.blaxel/**
   - `agents/` - Agent configurations

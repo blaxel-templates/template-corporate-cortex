@@ -1,0 +1,5 @@
+type = "agent"
+
+[env]
+QDRANT_COLLECTION_NAME = "template-test"
+QDRANT_EMBEDDING_MODEL = "text-embedding-3-small"

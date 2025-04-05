@@ -90,8 +90,10 @@ const main = async () => {
             }
         }
         logger.info("Company documents successfully stored in knowledge base.");
+        process.exit(0);    
     } catch (error) {
         logger.error(`Error storing documents in knowledge base: ${error}`);
+        process.exit(1);
     }
 };
 
