@@ -114,4 +114,3 @@ After gathering information:
 
 If our knowledge base doesn't have enough information, you can search the web for supplementary details.
 `;
-
