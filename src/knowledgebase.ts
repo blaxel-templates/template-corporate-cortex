@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { env } from "@blaxel/sdk";
+import { env } from "@blaxel/core";
 import { EmbeddingModel } from "./embeddings";
 
 type KnowledgebaseSearchResult = {

@@ -1,4 +1,3 @@
-import { logger } from "@blaxel/sdk";
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
 import { getKnowledgebase } from "../knowledgebase";
@@ -44,7 +43,7 @@ async function getContext({ query }: { query: string }): Promise<string> {
     });
 
     if (documents.length > 0) {
-      logger.info(`Retrieved ${documents.length} documents from knowledgebase`);
+      console.info(`Retrieved ${documents.length} documents from knowledgebase`);
 
       // Sort documents by similarity score (highest first)
       const sortedDocs = documents.sort(
@@ -144,11 +143,11 @@ async function getContext({ query }: { query: string }): Promise<string> {
 
       return context;
     } else {
-      logger.info("No relevant documents found in knowledgebase");
+      console.info("No relevant documents found in knowledgebase");
       return "No specific information found in our knowledge base for this query.";
     }
   } catch (error) {
-    logger.error(`Error getting context: ${error}`);
+    console.error(`Error getting context: ${error}`);
     return "Error retrieving information from knowledge base.";
   }
 }

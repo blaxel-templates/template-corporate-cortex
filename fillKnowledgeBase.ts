@@ -1,4 +1,3 @@
-import { logger } from "@blaxel/sdk";
 import { randomUUID } from "crypto";
 import { config } from "dotenv";
 import fs from "fs/promises";
@@ -58,7 +57,7 @@ const main = async () => {
         
         // Get all markdown files from the company-documents directory
         const files = await listFiles(companyDocsDir);
-        logger.info(`Found ${files.length} files in company-documents directory`);
+        console.info(`Found ${files.length} files in company-documents directory`);
 
         // Process each file in the company documents
         for (const fileName of files) {
@@ -67,7 +66,7 @@ const main = async () => {
                 const content = await fs.readFile(filePath, "utf-8");
                 const chunks = splitIntoChunks(content);
                 
-                logger.info(`Processing ${fileName} - ${chunks.length} chunks`);
+                console.info(`Processing ${fileName} - ${chunks.length} chunks`);
 
                 // Process chunks sequentially with delay instead of in parallel
                 for (let index = 0; index < chunks.length; index++) {
@@ -80,19 +79,19 @@ const main = async () => {
                             totalChunks: chunks.length
                         }
                     });
-                    logger.info(`Added chunk ${index + 1} of ${chunks.length} for ${fileName}`);
+                    console.info(`Added chunk ${index + 1} of ${chunks.length} for ${fileName}`);
                     // Add a 100ms delay between chunks to prevent rate limiting
                     await delay(100);
                 }
             } catch (error) {
-                logger.warn(`Failed to read file ${fileName}: ${error}`);
+                console.warn(`Failed to read file ${fileName}: ${error}`);
                 continue;
             }
         }
-        logger.info("Company documents successfully stored in knowledge base.");
+        console.info("Company documents successfully stored in knowledge base.");
         process.exit(0);    
     } catch (error) {
-        logger.error(`Error storing documents in knowledge base: ${error}`);
+        console.error(`Error storing documents in knowledge base: ${error}`);
         process.exit(1);
     }
 };

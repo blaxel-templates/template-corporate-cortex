@@ -1,4 +1,4 @@
-import { blModel, blTools, logger } from "@blaxel/sdk";
+import { blModel, blTools } from "@blaxel/langgraph";
 import { AIMessageChunk, HumanMessage } from "@langchain/core/messages";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
@@ -20,12 +20,13 @@ export async function agent(
   const prompt = await promptTemplate.format({
     input: input,
   });
+  const platformTools = await blTools(["exa"]);
   const streamResponse = await createReactAgent({
     // Load model API dynamically from Blaxel:
-    llm: await blModel("gpt-4o").ToLangChain(),
+    llm: await blModel("gpt-4o"),
     prompt: systemPrompt,
     // Load tools dynamically from Blaxel:
-    tools: [...(await blTools(["exa"]).ToLangChain()), getContextTool],
+    tools: [...platformTools, getContextTool],
   }).stream(
     {
       messages: [new HumanMessage(prompt)],
@@ -50,7 +51,7 @@ export async function agent(
         }
       }
     } catch (error: any) {
-      logger.error(`Error processing chunk: ${error.message}`);
+      console.error(`Error processing chunk: ${error.message}`);
       // Don't send raw chunks - just log the error
     }
   }
