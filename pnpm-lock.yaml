@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@blaxel/core':
-        specifier: 0.2.7
-        version: 0.2.7(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))
+        specifier: 0.2.13
+        version: 0.2.13(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))
       '@blaxel/langgraph':
-        specifier: 0.2.7
-        version: 0.2.7(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))(@opentelemetry/api@1.9.0)(handlebars@4.7.8)(openai@4.97.0(ws@8.18.2)(zod@3.24.4))(ws@8.18.2)
+        specifier: 0.2.13
+        version: 0.2.13(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))(@opentelemetry/api@1.9.0)(axios@1.9.0)(handlebars@4.7.8)(openai@4.97.0(ws@8.18.2)(zod@3.24.4))(ws@8.18.2)
       '@blaxel/telemetry':
-        specifier: 0.2.7
-        version: 0.2.7(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))(react@19.1.0)(zod@3.24.4)
+        specifier: 0.2.13
+        version: 0.2.13(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))(react@19.1.0)(zod@3.24.4)
       '@hey-api/client-fetch':
         specifier: ^0.10.0
         version: 0.10.0(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))
@@ -444,16 +444,16 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@blaxel/core@0.2.7':
-    resolution: {integrity: sha512-o29jVPBAVkNam3EjHAr7KqZytG6wriPh6CORyCWQFA7BWCJVwto2MB6wJRVIba9vI1pbj3dC+osgmsd/00xbDg==}
+  '@blaxel/core@0.2.13':
+    resolution: {integrity: sha512-9/vy9rvbgv+HwzXoSHzOsNR+pL/hh9iVPWulWudCt3JfKsc12/EPSJdyquZwp2BK9/Wu0v7YdXhG/KggDssTUg==}
     engines: {node: '>=18'}
 
-  '@blaxel/langgraph@0.2.7':
-    resolution: {integrity: sha512-KH5Qesxjixos/iU97NnOMExzKT4H8q39TqTRIoJt/10nMeGypN77MAqxd0Nvx1MyNYFN4uNG16XC5aLA4PJfaw==}
+  '@blaxel/langgraph@0.2.13':
+    resolution: {integrity: sha512-CZvg771ifiJ0YEOzw1xDO0FMH+cYCkvAHSRyCjXPYO/gIudmEqj7xUcUEA/vg4WGlZauq5KB3PvtLw0Ch0waJQ==}
     engines: {node: '>=18'}
 
-  '@blaxel/telemetry@0.2.7':
-    resolution: {integrity: sha512-yDQFO3/rM2bJ7nLI3wZwmtTxd7cTUSpBXk3hsbqRJk6khbBqN+INroaYecsM51pOnIwrMEdAALrm9b8Nz1q09w==}
+  '@blaxel/telemetry@0.2.13':
+    resolution: {integrity: sha512-M5IRv9YnYHOxDJUR2+6WiAEx1ei2UPFK/XpalXjtW6iG1yaDy7tUtufRbdDpIx0As1nWOwniLZpWUE5aJFG6XA==}
     engines: {node: '>=18'}
 
   '@cfworker/json-schema@4.1.1':
@@ -1219,6 +1219,9 @@ packages:
   avvio@9.1.0:
     resolution: {integrity: sha512-fYASnYi600CsH/j9EQov7lECAniYiBFiiAtBNuZYLA2leLe9qOvZzqYHFjtIj6gD2VMoMLP14834LFWvr4IfDw==}
 
+  axios@1.9.0:
+    resolution: {integrity: sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==}
+
   babel-jest@29.7.0:
     resolution: {integrity: sha512-BrvGY3xZSwEcCzKvKsCi2GgHqDqsYkOP4/by5xCgIwGXQxIEh+8ew3gmrE1y7XRR6LHZIj6yLYnUi/mm2KXKBg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1434,10 +1437,6 @@ packages:
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
-
-  crypto@1.0.1:
-    resolution: {integrity: sha512-VxBKmeNcqQdiUQUW2Tzq0t377b54N2bMtXO/qiLa+6eRRmmC4qT3D4OnTGoT/U6O9aklQ/jTwbOtRMTTY8G0Ig==}
-    deprecated: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
 
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
@@ -1660,6 +1659,15 @@ packages:
   find-up@4.1.0:
     resolution: {integrity: sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==}
     engines: {node: '>=8'}
+
+  follow-redirects@1.15.9:
+    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
 
   form-data-encoder@1.7.2:
     resolution: {integrity: sha512-qfqtYan3rxrnCk1VYaA4H+Ms9xdpPqvLZa6xmMgFvhO32x7/3J/ExcTd6qpxM0vH2GdMI+poehyBZvqfMTto8A==}
@@ -2463,6 +2471,9 @@ packages:
   proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
+
+  proxy-from-env@1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
 
   pure-rand@6.1.0:
     resolution: {integrity: sha512-bVWawvoZoBYpp6yIoQtQXHZjmz35RSVHnUOTefl8Vcjr8snTPY1wnpSPMWekcFwbxI6gtmT7rSYPFvz71ldiOA==}
@@ -3662,12 +3673,13 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@blaxel/core@0.2.7(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))':
+  '@blaxel/core@0.2.13(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))':
     dependencies:
       '@hey-api/client-fetch': 0.10.0(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))
       '@modelcontextprotocol/sdk': 1.11.0
-      crypto: 1.0.1
+      axios: 1.9.0
       dotenv: 16.5.0
+      form-data: 4.0.2
       jwt-decode: 4.0.0
       toml: 3.0.0
       uuid: 11.1.0
@@ -3677,12 +3689,13 @@ snapshots:
     transitivePeerDependencies:
       - '@hey-api/openapi-ts'
       - bufferutil
+      - debug
       - supports-color
       - utf-8-validate
 
-  '@blaxel/langgraph@0.2.7(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))(@opentelemetry/api@1.9.0)(handlebars@4.7.8)(openai@4.97.0(ws@8.18.2)(zod@3.24.4))(ws@8.18.2)':
+  '@blaxel/langgraph@0.2.13(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))(@opentelemetry/api@1.9.0)(axios@1.9.0)(handlebars@4.7.8)(openai@4.97.0(ws@8.18.2)(zod@3.24.4))(ws@8.18.2)':
     dependencies:
-      '@blaxel/core': 0.2.7(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))
+      '@blaxel/core': 0.2.13(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))
       '@google/generative-ai': 0.24.1
       '@langchain/anthropic': 0.3.20(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))
       '@langchain/cohere': 0.3.3(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))
@@ -3692,7 +3705,7 @@ snapshots:
       '@opentelemetry/instrumentation': 0.200.0(@opentelemetry/api@1.9.0)
       '@traceloop/instrumentation-langchain': 0.13.0(@opentelemetry/api@1.9.0)
       cohere-ai: 7.17.1
-      langchain: 0.3.24(@langchain/anthropic@0.3.20(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))))(@langchain/cohere@0.3.3(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))))(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(@langchain/deepseek@0.0.1(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(ws@8.18.2))(handlebars@4.7.8)(openai@4.97.0(ws@8.18.2)(zod@3.24.4))(ws@8.18.2)
+      langchain: 0.3.24(@langchain/anthropic@0.3.20(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))))(@langchain/cohere@0.3.3(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))))(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(@langchain/deepseek@0.0.1(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(ws@8.18.2))(axios@1.9.0)(handlebars@4.7.8)(openai@4.97.0(ws@8.18.2)(zod@3.24.4))(ws@8.18.2)
       zod: 3.24.4
       zod-to-json-schema: 3.24.5(zod@3.24.4)
     transitivePeerDependencies:
@@ -3711,6 +3724,7 @@ snapshots:
       - axios
       - bufferutil
       - cheerio
+      - debug
       - encoding
       - handlebars
       - openai
@@ -3720,14 +3734,14 @@ snapshots:
       - utf-8-validate
       - ws
 
-  '@blaxel/telemetry@0.2.7(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))(react@19.1.0)(zod@3.24.4)':
+  '@blaxel/telemetry@0.2.13(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))(react@19.1.0)(zod@3.24.4)':
     dependencies:
       '@ai-sdk/anthropic': 1.2.10(zod@3.24.4)
       '@ai-sdk/cerebras': 0.2.13(zod@3.24.4)
       '@ai-sdk/google': 1.2.14(zod@3.24.4)
       '@ai-sdk/groq': 1.2.8(zod@3.24.4)
       '@ai-sdk/openai': 1.3.21(zod@3.24.4)
-      '@blaxel/core': 0.2.7(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))
+      '@blaxel/core': 0.2.13(@hey-api/openapi-ts@0.66.3(typescript@5.8.3))
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/api-logs': 0.200.0
       '@opentelemetry/exporter-logs-otlp-http': 0.200.0(@opentelemetry/api@1.9.0)
@@ -3744,6 +3758,7 @@ snapshots:
     transitivePeerDependencies:
       - '@hey-api/openapi-ts'
       - bufferutil
+      - debug
       - react
       - supports-color
       - utf-8-validate
@@ -4794,6 +4809,14 @@ snapshots:
       '@fastify/error': 4.0.0
       fastq: 1.19.1
 
+  axios@1.9.0:
+    dependencies:
+      follow-redirects: 1.15.9
+      form-data: 4.0.2
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+
   babel-jest@29.7.0(@babel/core@7.26.9):
     dependencies:
       '@babel/core': 7.26.9
@@ -5060,8 +5083,6 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  crypto@1.0.1: {}
-
   debug@4.4.0:
     dependencies:
       ms: 2.1.3
@@ -5295,6 +5316,8 @@ snapshots:
     dependencies:
       locate-path: 5.0.0
       path-exists: 4.0.0
+
+  follow-redirects@1.15.9: {}
 
   form-data-encoder@1.7.2: {}
 
@@ -5869,7 +5892,7 @@ snapshots:
 
   kleur@3.0.3: {}
 
-  langchain@0.3.24(@langchain/anthropic@0.3.20(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))))(@langchain/cohere@0.3.3(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))))(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(@langchain/deepseek@0.0.1(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(ws@8.18.2))(handlebars@4.7.8)(openai@4.97.0(ws@8.18.2)(zod@3.24.4))(ws@8.18.2):
+  langchain@0.3.24(@langchain/anthropic@0.3.20(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))))(@langchain/cohere@0.3.3(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))))(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(@langchain/deepseek@0.0.1(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(ws@8.18.2))(axios@1.9.0)(handlebars@4.7.8)(openai@4.97.0(ws@8.18.2)(zod@3.24.4))(ws@8.18.2):
     dependencies:
       '@langchain/core': 0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4))
       '@langchain/openai': 0.5.10(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(ws@8.18.2)
@@ -5888,6 +5911,7 @@ snapshots:
       '@langchain/anthropic': 0.3.20(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))
       '@langchain/cohere': 0.3.3(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))
       '@langchain/deepseek': 0.0.1(@langchain/core@0.3.51(openai@4.97.0(ws@8.18.2)(zod@3.24.4)))(ws@8.18.2)
+      axios: 1.9.0
       handlebars: 4.7.8
     transitivePeerDependencies:
       - encoding
@@ -6204,6 +6228,8 @@ snapshots:
     dependencies:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
+
+  proxy-from-env@1.1.0: {}
 
   pure-rand@6.1.0: {}
 
