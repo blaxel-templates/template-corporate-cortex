@@ -23,7 +23,7 @@ This repository is a template implementation of a Corporate Knowledge Agent buil
 - **Node.js:** v20 or later
 - **Blaxel CLI:** Install globally:
   ```bash
-  curl -fsSL https://raw.githubusercontent.com/beamlit/toolkit/main/install.sh | BINDIR=$HOME/.local/bin sh
+  curl -fsSL https://raw.githubusercontent.com/blaxel-ai/toolkit/main/install.sh | BINDIR=$HOME/.local/bin sh
   ```
 - **Blaxel login:** Login to your workspace:
   ```bash
@@ -34,7 +34,7 @@ This repository is a template implementation of a Corporate Knowledge Agent buil
 
 1. Clone and install dependencies:
    ```bash
-   git clone https://github.com/beamlit/template-corporate-cortex.git
+   git clone https://github.com/blaxel-ai/template-corporate-cortex.git
    cd template-corporate-cortex
    npm install
    ```
