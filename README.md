@@ -1,203 +1,99 @@
-# 🏢 Corporate Cortex Agent
+# 🧠 Corporate Cortex Agent
 
-This repository is a template implementation of a Corporate Knowledge Agent built using the [Blaxel SDK](https://blaxel.ai) and [LangChain](https://langchain.com). The agent serves as an expert AI assistant deeply embedded within your organization, providing accurate, contextually relevant, and actionable responses to internal inquiries regarding IT services, resources, and processes by leveraging a comprehensive knowledge base.
+[![npm version](https://img.shields.io/npm/v/@blaxel/corporate-cortex-agent)](https://www.npmjs.com/package/@blaxel/corporate-cortex-agent) [![Node.js version](https://img.shields.io/node/v/20?logo=node.js)](https://nodejs.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)]
 
-<p align="center">
-  <img src="./assets/illustration.jpeg" width="600" alt="Corporate Cortex Agent">
-</p>
+> Expert AI assistant for corporate knowledge, providing secure, context-aware responses.
 
-## 🎬 See It In Action
+## Table of Contents
 
-<p align="center">
-  <a href="https://www.tella.tv/video/setting-up-your-first-knowledge-base-template-hu22" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.shields.io/badge/▶️_Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch Demo" width="200"/>
-  </a>
-</p>
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
 
-<p align="center">
-  <i>Watch our quick demo to see how Corporate Cortex transforms your organization's knowledge into actionable insights!</i>
-</p>
+## Features
 
-## 🚀 Prerequisites
+- Retrieval of organizational knowledge from Qdrant vector database
+- Contextual responses using OpenAI and customizable embedding models
+- Secure, private deployment with Blaxel SDK integration
+- Modular architecture: easy to extend with custom components
 
-- **Node.js:** v20 or later
-- **Blaxel CLI:** Install globally:
-  ```bash
-  curl -fsSL https://raw.githubusercontent.com/blaxel-ai/toolkit/main/install.sh | BINDIR=$HOME/.local/bin sh
-  ```
-- **Blaxel login:** Login to your workspace:
-  ```bash
-  bl login YOUR-WORKSPACE
-  ```
+## Prerequisites
 
-## ⚙️ Installation
+- Node.js v20 or later
+- npm (v9+)
+- Qdrant Cloud account
+- OpenAI account
 
-1. Clone and install dependencies:
-   ```bash
-   git clone https://github.com/blaxel-ai/template-corporate-cortex.git
-   cd template-corporate-cortex
-   npm install
-   ```
-
-2. Configure environment variables:
-   ```bash
-   cp .env-sample env
-   ```
-   Update the following in your `.env`:
-   - Qdrant configuration:
-     - Sign up for a free account at [Qdrant Cloud](https://cloud.qdrant.io/)
-     - Create a new cluster and copy your `QDRANT_URL`
-     - Generate an API key from your cluster settings for `QDRANT_API_KEY`
-     - Choose a name for your collection (`QDRANT_COLLECTION_NAME`)
-   - OpenAI API key:
-     - Sign up at [OpenAI Platform](https://platform.openai.com/)
-     - Navigate to API keys section
-     - Create a new API key for `OPENAI_API_KEY`
-   - Exa API key:
-     - Visit Exa.ai
-     - Create an account and subscribe to a plan
-     - Generate an API key from your dashboard for EXA_API_KEY
-   - Embedding model configuration:
-     - Set `EMBEDDING_MODEL` to your preferred embedding model (e.g., "text-embedding-3-small")
-     - Set `EMBEDDING_MODEL_TYPE` to the appropriate type (e.g., "openai")
-
-3. Register your Blaxel components:
-   ```bash
-   bl apply -R -f .blaxel
-   ```
-
-## 📚 Knowledge Base Setup
-
-The agent leverages a Qdrant vector database to store and retrieve your organization's knowledge. To populate the knowledge base:
-
-1. Place your organizational documents in the `company-documents` directory. The template includes sample documents covering:
-   - IT Service Architecture
-   - Contact Information
-   - Roles and Responsibilities
-   - Processes and Operating Model
-   - Enterprise Architecture Guidelines
-   - Organizational Structure
-
-2. Run the knowledge base population script:
-   ```bash
-   npm run fill-knowledge-base
-   ```
-
-This script will:
-- Read all documents from the `company-documents` directory
-- Split them into manageable chunks with appropriate overlap
-- Embed these chunks using your configured embedding model
-- Store them in your Qdrant collection with relevant metadata
-
-## ✨ Features
-
-- 🤖 Enterprise knowledge management with advanced AI models
-- 🗄️ Integration with Qdrant vector database for knowledge storage
-- 📚 Contextual retrieval of relevant information from your knowledge base
-- 🔍 Intelligent categorization and organization of retrieved documents
-- 📋 Comprehensive understanding of your organization's:
-  - IT Service Architecture
-  - Ownership and Contact Information
-  - Roles and Responsibilities
-  - Established Processes
-  - Operating Model
-  - Enterprise Architecture Design Guidelines
-
-## 💻 Development
-
-Start the development server with hot reloading:
+## Installation
 
 ```bash
-bl serve --hotreload
+# Clone repository
+git clone https://github.com/blaxel-templates/template-corporate-cortex.git
+cd template-corporate-cortex
+
+# Install dependencies
+npm install
 ```
 
-To test the agent, open a new terminal and run:
+## Configuration
+
+Create a `.env` file in the project root with the following variables:
+
+| Variable                 | Description                                  | Required |
+|--------------------------|----------------------------------------------|----------|
+| QDRANT_CLOUD_URL         | Qdrant Cloud endpoint                        | Yes      |
+| QDRANT_API_KEY           | API key for Qdrant Cloud                     | Yes      |
+| OPENAI_API_KEY           | API key for OpenAI                           | Yes      |
+| EXAMPLE_EMBEDDING_MODEL  | (Optional) Embedding model name              | No       |
+| EMBEDDING_MODEL_TYPE     | (Optional) e.g., `openai`                    | No       |
+
+## Usage
 
 ```bash
-bl chat template-corporate-cortex --local
+# Run the agent locally
+defaultAgent --config .env
 ```
 
-This will open an interactive chat session with your local agent where you can test inquiries about your organization's IT services and processes.
+Example code:
 
-## 🗣️ Example Inquiries
+```js
+import { CorporateCortexAgent } from '@blaxel/corporate-cortex-agent';
 
-The repository includes a comprehensive set of example inquiries in `company-documents/example-inquiries.md`. Here are some examples to get started:
+async function main() {
+  const agent = new CorporateCortexAgent();
+  await agent.init();
+  const response = await agent.ask('How do I deploy updates?');
+  console.log(response);
+}
 
-- ```
-  Can we buy tool XY for our department?
-  ```
-
-- ```
-  What is the process for requesting additional resources for project Z?
-  ```
-
-- ```
-  Who is responsible for managing our cloud infrastructure?
-  ```
-
-- ```
-  What is our incident management process?
-  ```
-
-- ```
-  How do we request changes to our enterprise architecture?
-  ```
-
-Each inquiry will trigger the agent to search your knowledge base for relevant information, organize it by category, and provide a comprehensive response following your organization's guidelines and processes.
-
-## 🧠 How It Works
-
-The agent uses a sophisticated retrieval and response generation system:
-
-1. **Knowledge Retrieval**: When a user asks a question, the agent:
-   - Converts the query into an embedding using the configured model
-   - Searches the Qdrant vector database for semantically similar content
-   - Retrieves the most relevant document chunks
-
-2. **Information Organization**: The agent then:
-   - Groups documents by category
-   - Prioritizes information based on relevance
-   - Formats the information in a structured, readable format
-
-3. **Response Generation**: Finally, the agent:
-   - Synthesizes a comprehensive response using the retrieved information
-   - Follows your organization's guidelines and processes
-   - Includes source information when available
-
-## 🚀 Deployment
-
-Deploy to Blaxel:
-
-```bash
-bl deploy
+main();
 ```
 
-## 📁 Project Structure
+## API Reference
 
-- **src/**
-  - `agent.ts` - Main agent configuration and request handling
-  - `prompt.ts` - System and user prompt templates
-  - `knowledgebase.ts` - Knowledge base integration with Qdrant
-  - `embeddings.ts` - Embedding model configuration
-  - `error.ts` - Error handling
-  - `functions/` - Custom functions for the agent
-- **.blaxel/**
-  - `agents/` - Agent configurations
-  - `functions/` - Function definitions
-  - `models/` - Model configurations
-- **company-documents/** - Sample organizational documents
-- **fillKnowledgeBase.ts** - Script to populate the knowledge base
-- **index.ts** - Application entry point
+See the [API documentation](docs/API.md) for detailed endpoints and usage.
 
-## 🛠️ Customization
+## Contributing
 
-To customize the agent for your organization:
+Contributions are welcome! Please follow these steps:
 
-1. Replace the sample documents in `company-documents/` with your actual organizational documents
-2. Adjust the prompts in `src/prompt.ts` to match your organization's tone and style
-3. Modify the agent configuration in `src/agent.ts` to customize the retrieval and response generation
-4. Update the Blaxel configurations in `.blaxel/` to change the agent's behavior
+1. Fork the repository
+2. Create a branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a pull request
 
-## 📄 License
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
-MIT Licensed. See [LICENSE](LICENSE) for details.
+## License
+
+Distributed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+<small>Built with ❤️ using Blaxel SDK and LangChain.</small>
