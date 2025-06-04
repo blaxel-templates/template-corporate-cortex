@@ -134,7 +134,7 @@ Update the following values with your own credentials:
   - Create an account and subscribe to a plan
   - Generate an API key from your dashboard for `EXA_API_KEY`
 - **Embedding model configuration**:
-  - Set `EMBEDDING_MODEL` to your preferred embedding model (e.g., "text-embedding-3-small")
+  - Set `EMBEDDING_MODEL` to your preferred embedding model (e.g., "embedding-model-openai")
   - Set `EMBEDDING_MODEL_TYPE` to the appropriate type (e.g., "openai")
 
 **Set up knowledge base:**
