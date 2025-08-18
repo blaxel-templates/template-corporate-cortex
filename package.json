@@ -13,9 +13,9 @@
   "author": "main",
   "license": "MIT",
   "dependencies": {
-    "@blaxel/core": "0.2.25",
-    "@blaxel/langgraph": "0.2.25",
-    "@blaxel/telemetry": "0.2.25",
+    "@blaxel/core": "0.2.29",
+    "@blaxel/langgraph": "0.2.29",
+    "@blaxel/telemetry": "0.2.29",
     "@hey-api/client-fetch": "^0.10.0",
     "@langchain/core": "^0.3.51",
     "@langchain/langgraph": "^0.2.68",

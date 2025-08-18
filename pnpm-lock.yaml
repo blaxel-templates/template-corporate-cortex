@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@blaxel/core':
-        specifier: 0.2.25
-        version: 0.2.25(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))
+        specifier: 0.2.29
+        version: 0.2.29(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))
       '@blaxel/langgraph':
-        specifier: 0.2.25
-        version: 0.2.25(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))(@opentelemetry/api@1.9.0)(axios@1.9.0)(handlebars@4.7.8)(openai@4.104.0(ws@8.18.2)(zod@3.25.50))(ws@8.18.2)
+        specifier: 0.2.29
+        version: 0.2.29(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))(@opentelemetry/api@1.9.0)(axios@1.9.0)(handlebars@4.7.8)(openai@4.104.0(ws@8.18.2)(zod@3.25.50))(ws@8.18.2)
       '@blaxel/telemetry':
-        specifier: 0.2.25
-        version: 0.2.25(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))(react@19.1.0)(zod@3.25.50)
+        specifier: 0.2.29
+        version: 0.2.29(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))(react@19.1.0)(zod@3.25.50)
       '@hey-api/client-fetch':
         specifier: ^0.10.0
         version: 0.10.2(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))
@@ -448,16 +448,16 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@blaxel/core@0.2.25':
-    resolution: {integrity: sha512-d8S2odHkp+FUCctKb0NTKpTfhrpnlyqdKLp5+BKKuNd59toCuSuH1NfG4aBanoSl8J53xn1C37j3bhvM1L7ajw==}
+  '@blaxel/core@0.2.29':
+    resolution: {integrity: sha512-m3jeudosJjkkPn5FYsTsxA4cRcgxsZMzYtmClijkNYkNUcp6V+dgNSIobIYPZt91rbVxAwsNuB24yUwZFNg2qA==}
     engines: {node: '>=18'}
 
-  '@blaxel/langgraph@0.2.25':
-    resolution: {integrity: sha512-aa7qFaVjvrFR8iWyhnK3PDjkP6DkO+/hO91hygdI1iKkN6rGnm6JEMuU/tfSmtTWVR1y9QYBZClZgyav73JLEw==}
+  '@blaxel/langgraph@0.2.29':
+    resolution: {integrity: sha512-c76/alYrFA3wje0mQpU+JzIKbmOFqT7FmvgM6OV2O+CjxYprQ8Za7TwsDJKAcNeoVcfOxWBm9jS2dcO3liO1Fg==}
     engines: {node: '>=18'}
 
-  '@blaxel/telemetry@0.2.25':
-    resolution: {integrity: sha512-YJMur2SrtW1jy8fNpDPjl51vKx4C6mCXBT/K4y4a0Hai+KIdycdPc2eLBazSUL8LtcB0gEkD+BvalCPMuk8/4Q==}
+  '@blaxel/telemetry@0.2.29':
+    resolution: {integrity: sha512-UWrd9Q40JPonyGRu+fsVR9fGHzdC+3nDAsYyDUTQjAZ00DdptpFFqxjpVJmiuamRT6JlDhV+Fmq2d3+Reu3YOg==}
     engines: {node: '>=18'}
 
   '@cfworker/json-schema@4.1.1':
@@ -3721,7 +3721,7 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@blaxel/core@0.2.25(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))':
+  '@blaxel/core@0.2.29(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))':
     dependencies:
       '@hey-api/client-fetch': 0.10.2(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))
       '@modelcontextprotocol/sdk': 1.12.1
@@ -3741,9 +3741,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@blaxel/langgraph@0.2.25(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))(@opentelemetry/api@1.9.0)(axios@1.9.0)(handlebars@4.7.8)(openai@4.104.0(ws@8.18.2)(zod@3.25.50))(ws@8.18.2)':
+  '@blaxel/langgraph@0.2.29(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))(@opentelemetry/api@1.9.0)(axios@1.9.0)(handlebars@4.7.8)(openai@4.104.0(ws@8.18.2)(zod@3.25.50))(ws@8.18.2)':
     dependencies:
-      '@blaxel/core': 0.2.25(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))
+      '@blaxel/core': 0.2.29(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))
       '@google/generative-ai': 0.24.1
       '@langchain/anthropic': 0.3.21(@langchain/core@0.3.57(openai@4.104.0(ws@8.18.2)(zod@3.25.50)))
       '@langchain/cohere': 0.3.3(@langchain/core@0.3.57(openai@4.104.0(ws@8.18.2)(zod@3.25.50)))
@@ -3782,14 +3782,14 @@ snapshots:
       - utf-8-validate
       - ws
 
-  '@blaxel/telemetry@0.2.25(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))(react@19.1.0)(zod@3.25.50)':
+  '@blaxel/telemetry@0.2.29(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))(react@19.1.0)(zod@3.25.50)':
     dependencies:
       '@ai-sdk/anthropic': 1.2.12(zod@3.25.50)
       '@ai-sdk/cerebras': 0.2.14(zod@3.25.50)
       '@ai-sdk/google': 1.2.19(zod@3.25.50)
       '@ai-sdk/groq': 1.2.9(zod@3.25.50)
       '@ai-sdk/openai': 1.3.22(zod@3.25.50)
-      '@blaxel/core': 0.2.25(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))
+      '@blaxel/core': 0.2.29(@hey-api/openapi-ts@0.69.2(typescript@5.8.3))
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/api-logs': 0.200.0
       '@opentelemetry/exporter-logs-otlp-http': 0.200.0(@opentelemetry/api@1.9.0)
